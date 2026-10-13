@@ -1,2 +1,6 @@
 # Salida generada por el notebook: se reconstruye ejecutando listings_clean.ipynb
 data/silver/*.csv
+data/gold/*.csv
+
+# Se excluye el entorno virtual de python
+env/
