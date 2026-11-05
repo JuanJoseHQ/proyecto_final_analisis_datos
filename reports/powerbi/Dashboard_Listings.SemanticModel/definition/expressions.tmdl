@@ -1,0 +1,4 @@
+expression RutaDatos = "C:\Users\USUARIO\Desktop\proyecto_final_analisis_datos\data\gold\star\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 7ff792d8-53ae-5b3f-83cf-35d3cd39f3e8
+
+	annotation PBI_ResultType = Text

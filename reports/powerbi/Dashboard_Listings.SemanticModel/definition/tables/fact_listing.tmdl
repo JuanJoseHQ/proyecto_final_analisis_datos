@@ -1,0 +1,570 @@
+table fact_listing
+	lineageTag: c4656762-971a-5af6-ba4f-666206253f0d
+
+	measure Anuncios = COUNTROWS ( fact_listing )
+		formatString: #,0
+		lineageTag: 538624ca-864a-52ec-8d98-aef1da163829
+
+	measure 'Precio Mediano' = MEDIAN ( fact_listing[price] )
+		formatString: \$#,0
+		lineageTag: f91f199c-09b6-5adb-ab6d-0176a855812d
+
+	measure 'Tasa de Ocupación' = DIVIDE ( AVERAGE ( fact_listing[estimated_occupancy_l365d] ), 365 )
+		formatString: 0.0%
+		lineageTag: fe133b52-01ae-57a0-a2f2-3cb7a3c6f34c
+
+	measure 'Ingreso Anual Promedio' = AVERAGE ( fact_listing[estimated_revenue_l365d] )
+		formatString: \$#,0
+		lineageTag: 13dd79ea-c869-5b85-a986-1aeed370260c
+
+	measure 'Calificación Promedio' = AVERAGE ( fact_listing[review_scores_rating] )
+		formatString: 0.00
+		lineageTag: e9d243a5-6df6-5194-a853-1c6238f11147
+
+	measure '% Superhost' = DIVIDE ( CALCULATE ( [Anuncios], dim_host[es_superhost] = 1 ), [Anuncios] )
+		formatString: 0.0%
+		lineageTag: f70a0120-4dcf-5bd5-8d9e-ebee4485ced3
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: a18fd3f7-0e34-514e-8f0c-704540744ee0
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = User
+
+	column name
+		dataType: string
+		lineageTag: e675517f-2306-566b-980d-8a55da2d61f9
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = User
+
+	column host_id
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 94b1328a-f302-5790-bf0b-c081d11779fb
+		summarizeBy: none
+		sourceColumn: host_id
+
+		annotation SummarizationSetBy = User
+
+	column location_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 17a24221-49d6-5e57-874f-6ef18ff32c9a
+		summarizeBy: none
+		sourceColumn: location_key
+
+		annotation SummarizationSetBy = User
+
+	column property_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: e1d148de-7770-58c6-98bc-88fc157f29da
+		summarizeBy: none
+		sourceColumn: property_key
+
+		annotation SummarizationSetBy = User
+
+	column scrape_date_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: e5420a62-3e81-59b4-a01c-124e728a5b8b
+		summarizeBy: none
+		sourceColumn: scrape_date_key
+
+		annotation SummarizationSetBy = User
+
+	column first_review_date_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: d8f3d18a-dbf1-5c88-b26b-90c6d01d7dc4
+		summarizeBy: none
+		sourceColumn: first_review_date_key
+
+		annotation SummarizationSetBy = User
+
+	column last_review_date_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 73c631f8-44a0-53ad-86e2-ecf62dfc2b41
+		summarizeBy: none
+		sourceColumn: last_review_date_key
+
+		annotation SummarizationSetBy = User
+
+	column latitude
+		dataType: double
+		lineageTag: e9a3d679-73f2-5fda-b2f0-3482c4cff9f1
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = User
+
+	column longitude
+		dataType: double
+		lineageTag: a0363ab3-b7cc-5a1b-8721-b671cd75f586
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = User
+
+	column price
+		dataType: double
+		lineageTag: f790f8ef-c48c-5d3a-ad89-9f3251d304ac
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = User
+
+	column price_per_guest
+		dataType: double
+		lineageTag: 1c958236-8252-5ef4-8709-deb88bb05a7b
+		summarizeBy: none
+		sourceColumn: price_per_guest
+
+		annotation SummarizationSetBy = User
+
+	column accommodates
+		dataType: int64
+		formatString: 0
+		lineageTag: b615d73f-f1a0-5312-a7b0-d4af3b5e3df1
+		summarizeBy: none
+		sourceColumn: accommodates
+
+		annotation SummarizationSetBy = User
+
+	column bathrooms
+		dataType: double
+		lineageTag: 2de13424-8e16-5a40-b425-2e5474499539
+		summarizeBy: none
+		sourceColumn: bathrooms
+
+		annotation SummarizationSetBy = User
+
+	column bedrooms
+		dataType: double
+		lineageTag: 715edc00-4aa0-59c1-96c7-635d62cb9a7f
+		summarizeBy: none
+		sourceColumn: bedrooms
+
+		annotation SummarizationSetBy = User
+
+	column beds
+		dataType: double
+		lineageTag: db161802-3840-55f2-8baf-0e365d81dffe
+		summarizeBy: none
+		sourceColumn: beds
+
+		annotation SummarizationSetBy = User
+
+	column amenities_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e7a04cc5-9779-5d2a-baf4-3f813db50ead
+		summarizeBy: none
+		sourceColumn: amenities_count
+
+		annotation SummarizationSetBy = User
+
+	column minimum_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: d6bdcf70-d238-545e-8b83-e4382a4d85bc
+		summarizeBy: none
+		sourceColumn: minimum_nights
+
+		annotation SummarizationSetBy = User
+
+	column maximum_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bf1a84b-f7c0-5b43-89cd-43fa59fe1db3
+		summarizeBy: none
+		sourceColumn: maximum_nights
+
+		annotation SummarizationSetBy = User
+
+	column availability_30
+		dataType: int64
+		formatString: 0
+		lineageTag: 014033b9-f2fb-58d4-9163-7f4a1de68556
+		summarizeBy: none
+		sourceColumn: availability_30
+
+		annotation SummarizationSetBy = User
+
+	column availability_90
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e44c07d-2490-5b58-ba53-61085c62dd66
+		summarizeBy: none
+		sourceColumn: availability_90
+
+		annotation SummarizationSetBy = User
+
+	column availability_365
+		dataType: int64
+		formatString: 0
+		lineageTag: 37075b06-539f-5ee2-b90f-5d4676e6b164
+		summarizeBy: none
+		sourceColumn: availability_365
+
+		annotation SummarizationSetBy = User
+
+	column number_of_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: b4ab2477-ce45-51b3-9e84-b0ab779c9f33
+		summarizeBy: none
+		sourceColumn: number_of_reviews
+
+		annotation SummarizationSetBy = User
+
+	column number_of_reviews_ltm
+		dataType: int64
+		formatString: 0
+		lineageTag: a70764b4-224d-5c25-b81a-51bcce67c2ad
+		summarizeBy: none
+		sourceColumn: number_of_reviews_ltm
+
+		annotation SummarizationSetBy = User
+
+	column reviews_per_month
+		dataType: double
+		lineageTag: 4df4a6bc-6044-5502-b9bc-3d85ce54810a
+		summarizeBy: none
+		sourceColumn: reviews_per_month
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_rating
+		dataType: double
+		lineageTag: 9a91f72c-da0a-5d10-9713-33384e47a491
+		summarizeBy: none
+		sourceColumn: review_scores_rating
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_accuracy
+		dataType: double
+		lineageTag: b4fbc82e-0a46-52b0-ab56-91cd71120d86
+		summarizeBy: none
+		sourceColumn: review_scores_accuracy
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_cleanliness
+		dataType: double
+		lineageTag: a986b80c-4390-5372-800d-8d89409be0fb
+		summarizeBy: none
+		sourceColumn: review_scores_cleanliness
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_checkin
+		dataType: double
+		lineageTag: 8b6ef775-f78c-52d6-a9ce-8cb49c605cf1
+		summarizeBy: none
+		sourceColumn: review_scores_checkin
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_communication
+		dataType: double
+		lineageTag: d1954f10-e1cb-5b07-bf59-c01db6a12de5
+		summarizeBy: none
+		sourceColumn: review_scores_communication
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_location
+		dataType: double
+		lineageTag: 84e85176-ed4c-54ad-b4a9-abc87b3ef9bb
+		summarizeBy: none
+		sourceColumn: review_scores_location
+
+		annotation SummarizationSetBy = User
+
+	column review_scores_value
+		dataType: double
+		lineageTag: b9216527-1fb0-5ec7-bbee-5d13a9bdf11d
+		summarizeBy: none
+		sourceColumn: review_scores_value
+
+		annotation SummarizationSetBy = User
+
+	column estimated_occupancy_l365d
+		dataType: int64
+		formatString: 0
+		lineageTag: 33bb1eba-c61c-577c-8c43-4c5310cb58d6
+		summarizeBy: none
+		sourceColumn: estimated_occupancy_l365d
+
+		annotation SummarizationSetBy = User
+
+	column estimated_revenue_l365d
+		dataType: double
+		lineageTag: 801e0588-e05f-5e2e-9beb-ca6fe49bffe9
+		summarizeBy: none
+		sourceColumn: estimated_revenue_l365d
+
+		annotation SummarizationSetBy = User
+
+	column host_since
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f99e9f67-cb23-570b-96a2-a91b087fe3a0
+		summarizeBy: none
+		sourceColumn: host_since
+
+		annotation SummarizationSetBy = User
+		annotation UnderlyingDateTimeDataType = Date
+
+	column host_since_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ad8e045-72bf-5eeb-a98e-1e0c09ef32e4
+		summarizeBy: none
+		sourceColumn: host_since_year
+
+		annotation SummarizationSetBy = User
+
+	column host_years
+		dataType: double
+		lineageTag: b3310a5b-b3f9-5b89-a1b6-d5cd39eae4a9
+		summarizeBy: none
+		sourceColumn: host_years
+
+		annotation SummarizationSetBy = User
+
+	column host_identity_verified
+		dataType: boolean
+		lineageTag: 544b4ed8-05a3-5baf-ba13-e02e35c71e01
+		summarizeBy: none
+		sourceColumn: host_identity_verified
+
+		annotation SummarizationSetBy = User
+
+	column host_response_category
+		dataType: string
+		lineageTag: 0284c0eb-6432-5c70-baaf-dd8a3b19f3c1
+		summarizeBy: none
+		sourceColumn: host_response_category
+
+		annotation SummarizationSetBy = User
+
+	column host_response_rate
+		dataType: double
+		lineageTag: f6cc022c-6a4c-5def-a42a-c8bbb46d93e5
+		summarizeBy: none
+		sourceColumn: host_response_rate
+
+		annotation SummarizationSetBy = User
+
+	column host_acceptance_rate
+		dataType: double
+		lineageTag: a476860d-33f1-5692-9d84-e58ffd1ad1f4
+		summarizeBy: none
+		sourceColumn: host_acceptance_rate
+
+		annotation SummarizationSetBy = User
+
+	column host_listings_count
+		dataType: double
+		lineageTag: cb33d514-673c-5ab2-a75e-1b27381eb8e4
+		summarizeBy: none
+		sourceColumn: host_listings_count
+
+		annotation SummarizationSetBy = User
+
+	column host_segment
+		dataType: string
+		lineageTag: eef68d0d-5815-55fd-9117-55744b0329b1
+		summarizeBy: none
+		sourceColumn: host_segment
+
+		annotation SummarizationSetBy = User
+
+	column verif_email
+		dataType: int64
+		formatString: 0
+		lineageTag: 425b149f-0ffc-5104-b344-0067d3827bd3
+		summarizeBy: none
+		sourceColumn: verif_email
+
+		annotation SummarizationSetBy = User
+
+	column verif_phone
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a6ac57c-32b0-550b-a766-d0e4bca95d56
+		summarizeBy: none
+		sourceColumn: verif_phone
+
+		annotation SummarizationSetBy = User
+
+	column verif_work_email
+		dataType: int64
+		formatString: 0
+		lineageTag: 4375f9f4-1c62-5ebd-80ad-99a8291d328f
+		summarizeBy: none
+		sourceColumn: verif_work_email
+
+		annotation SummarizationSetBy = User
+
+	column amen_bed_linens
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b29fc41-9cce-5f5d-82d1-431d25f2892c
+		summarizeBy: none
+		sourceColumn: amen_bed_linens
+
+		annotation SummarizationSetBy = User
+
+	column amen_cooking_basics
+		dataType: int64
+		formatString: 0
+		lineageTag: f580997f-0a62-5fae-b34c-e2ee64fba22a
+		summarizeBy: none
+		sourceColumn: amen_cooking_basics
+
+		annotation SummarizationSetBy = User
+
+	column amen_dedicated_workspace
+		dataType: int64
+		formatString: 0
+		lineageTag: 50708e31-31ef-5bfd-9a8b-b38a550f543c
+		summarizeBy: none
+		sourceColumn: amen_dedicated_workspace
+
+		annotation SummarizationSetBy = User
+
+	column amen_dishes_and_silverware
+		dataType: int64
+		formatString: 0
+		lineageTag: 6abd1827-3a8c-5b5e-90b6-c687272ba0f8
+		summarizeBy: none
+		sourceColumn: amen_dishes_and_silverware
+
+		annotation SummarizationSetBy = User
+
+	column amen_essentials
+		dataType: int64
+		formatString: 0
+		lineageTag: cc08aa9a-5dee-549c-9a45-00be9ec99eb3
+		summarizeBy: none
+		sourceColumn: amen_essentials
+
+		annotation SummarizationSetBy = User
+
+	column amen_hangers
+		dataType: int64
+		formatString: 0
+		lineageTag: a913054f-01b6-510d-ae18-0d3a20395abe
+		summarizeBy: none
+		sourceColumn: amen_hangers
+
+		annotation SummarizationSetBy = User
+
+	column amen_hot_water
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dd8813e-ae12-5fef-80f3-7f0c240be0b0
+		summarizeBy: none
+		sourceColumn: amen_hot_water
+
+		annotation SummarizationSetBy = User
+
+	column amen_iron
+		dataType: int64
+		formatString: 0
+		lineageTag: de9c0180-1ffe-57b8-8833-e7bd0f02e1e5
+		summarizeBy: none
+		sourceColumn: amen_iron
+
+		annotation SummarizationSetBy = User
+
+	column amen_kitchen
+		dataType: int64
+		formatString: 0
+		lineageTag: d537f632-addc-5ba3-aa3b-618378ff5d55
+		summarizeBy: none
+		sourceColumn: amen_kitchen
+
+		annotation SummarizationSetBy = User
+
+	column amen_wifi
+		dataType: int64
+		formatString: 0
+		lineageTag: 30aac07d-b771-500e-b2a5-278169af66b5
+		summarizeBy: none
+		sourceColumn: amen_wifi
+
+		annotation SummarizationSetBy = User
+
+	column instant_bookable
+		dataType: int64
+		formatString: 0
+		lineageTag: a5335118-bb33-5da5-a603-29caea24ab03
+		summarizeBy: none
+		sourceColumn: instant_bookable
+
+		annotation SummarizationSetBy = User
+
+	column has_availability
+		dataType: int64
+		formatString: 0
+		lineageTag: b31e6372-75f3-5e45-ba86-05ed5adaafec
+		summarizeBy: none
+		sourceColumn: has_availability
+
+		annotation SummarizationSetBy = User
+
+	column tiene_precio
+		dataType: int64
+		formatString: 0
+		lineageTag: be66c7ae-882d-56e0-bf17-590f9b026cb5
+		summarizeBy: none
+		sourceColumn: tiene_precio
+
+		annotation SummarizationSetBy = User
+
+	column outlier_price_iqr
+		dataType: int64
+		formatString: 0
+		lineageTag: 47932b9b-5da3-5fc8-8c22-ccc1af379c4c
+		summarizeBy: none
+		sourceColumn: outlier_price_iqr
+
+		annotation SummarizationSetBy = User
+
+	column flag_review_antes_host
+		dataType: int64
+		formatString: 0
+		lineageTag: 24fa8142-f7cb-54be-851a-cf6a28e7fc7a
+		summarizeBy: none
+		sourceColumn: flag_review_antes_host
+
+		annotation SummarizationSetBy = User
+
+	partition fact_listing = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "fact_listing.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"id", Int64.Type}, {"name", type text}, {"host_id", Int64.Type}, {"location_key", Int64.Type}, {"property_key", Int64.Type}, {"scrape_date_key", Int64.Type}, {"first_review_date_key", Int64.Type}, {"last_review_date_key", Int64.Type}, {"latitude", type number}, {"longitude", type number}, {"price", type number}, {"price_per_guest", type number}, {"accommodates", Int64.Type}, {"bathrooms", type number}, {"bedrooms", type number}, {"beds", type number}, {"amenities_count", Int64.Type}, {"minimum_nights", Int64.Type}, {"maximum_nights", Int64.Type}, {"availability_30", Int64.Type}, {"availability_90", Int64.Type}, {"availability_365", Int64.Type}, {"number_of_reviews", Int64.Type}, {"number_of_reviews_ltm", Int64.Type}, {"reviews_per_month", type number}, {"review_scores_rating", type number}, {"review_scores_accuracy", type number}, {"review_scores_cleanliness", type number}, {"review_scores_checkin", type number}, {"review_scores_communication", type number}, {"review_scores_location", type number}, {"review_scores_value", type number}, {"estimated_occupancy_l365d", Int64.Type}, {"estimated_revenue_l365d", type number}, {"host_since", type date}, {"host_since_year", Int64.Type}, {"host_years", type number}, {"host_identity_verified", type logical}, {"host_response_category", type text}, {"host_response_rate", type number}, {"host_acceptance_rate", type number}, {"host_listings_count", type number}, {"host_segment", type text}, {"verif_email", Int64.Type}, {"verif_phone", Int64.Type}, {"verif_work_email", Int64.Type}, {"amen_bed_linens", Int64.Type}, {"amen_cooking_basics", Int64.Type}, {"amen_dedicated_workspace", Int64.Type}, {"amen_dishes_and_silverware", Int64.Type}, {"amen_essentials", Int64.Type}, {"amen_hangers", Int64.Type}, {"amen_hot_water", Int64.Type}, {"amen_iron", Int64.Type}, {"amen_kitchen", Int64.Type}, {"amen_wifi", Int64.Type}, {"instant_bookable", Int64.Type}, {"has_availability", Int64.Type}, {"tiene_precio", Int64.Type}, {"outlier_price_iqr", Int64.Type}, {"flag_review_antes_host", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

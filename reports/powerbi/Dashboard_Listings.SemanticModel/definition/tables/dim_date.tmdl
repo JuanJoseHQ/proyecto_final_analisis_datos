@@ -1,0 +1,124 @@
+table dim_date
+	lineageTag: 2c162725-6226-5815-905b-249c687eaaa0
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: aca24e55-22cc-51b8-9701-6e790977f994
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = User
+
+	column fecha
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 6c8048e0-84a8-5b05-96ad-ce45d0054469
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = User
+		annotation UnderlyingDateTimeDataType = Date
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: e481c18a-33d1-541d-8068-e9767546c8ef
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = User
+
+	column trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 35489b30-7642-5fdf-ac41-69a9893d90ec
+		summarizeBy: none
+		sourceColumn: trimestre
+
+		annotation SummarizationSetBy = User
+
+	column mes_num
+		dataType: int64
+		formatString: 0
+		lineageTag: e97e7f3f-0602-579d-9fba-8c06aceea429
+		summarizeBy: none
+		sourceColumn: mes_num
+
+		annotation SummarizationSetBy = User
+
+	column mes
+		dataType: string
+		lineageTag: 26c12cde-99ba-5e5b-a8dc-6ec98f08199c
+		summarizeBy: none
+		sourceColumn: mes
+		sortByColumn: mes_num
+
+		annotation SummarizationSetBy = User
+
+	column anio_mes
+		dataType: string
+		lineageTag: 006daa88-1a3e-52b5-91e8-84d61d01e8b0
+		summarizeBy: none
+		sourceColumn: anio_mes
+
+		annotation SummarizationSetBy = User
+
+	column dia
+		dataType: int64
+		formatString: 0
+		lineageTag: f597a23f-b42a-5330-b6d8-00aed52ab82b
+		summarizeBy: none
+		sourceColumn: dia
+
+		annotation SummarizationSetBy = User
+
+	column dia_semana_num
+		dataType: int64
+		formatString: 0
+		lineageTag: 794636cc-4260-5b1b-a5ef-31088db979f5
+		summarizeBy: none
+		sourceColumn: dia_semana_num
+
+		annotation SummarizationSetBy = User
+
+	column dia_semana
+		dataType: string
+		lineageTag: 7461f093-6269-5c90-9e47-1be831abb120
+		summarizeBy: none
+		sourceColumn: dia_semana
+		sortByColumn: dia_semana_num
+
+		annotation SummarizationSetBy = User
+
+	column es_fin_de_semana
+		dataType: int64
+		formatString: 0
+		lineageTag: 472c53b5-9340-5e08-a0bb-7df843d05319
+		summarizeBy: none
+		sourceColumn: es_fin_de_semana
+
+		annotation SummarizationSetBy = User
+
+	column periodo
+		dataType: string
+		lineageTag: df524f2a-9a84-5290-8e10-ed15eb054198
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = User
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_date.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"date_key", Int64.Type}, {"fecha", type date}, {"anio", Int64.Type}, {"trimestre", Int64.Type}, {"mes_num", Int64.Type}, {"mes", type text}, {"anio_mes", type text}, {"dia", Int64.Type}, {"dia_semana_num", Int64.Type}, {"dia_semana", type text}, {"es_fin_de_semana", Int64.Type}, {"periodo", type text}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,39 @@
+table dim_host
+	lineageTag: 13bde21f-e10d-5cde-a0dc-25cc0fdb9fae
+
+	column host_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 73a40318-6c74-5a2f-90a8-2f7b095307c7
+		summarizeBy: none
+		sourceColumn: host_id
+
+		annotation SummarizationSetBy = User
+
+	column es_superhost
+		dataType: int64
+		formatString: 0
+		lineageTag: e4abcd6c-9504-5769-b377-666dc5b85851
+		summarizeBy: none
+		sourceColumn: es_superhost
+
+		annotation SummarizationSetBy = User
+
+	column 'Tipo Anfitrión' = IF ( dim_host[es_superhost] = 1, "Superhost", "No superhost" )
+		dataType: string
+		lineageTag: 4c113814-da7c-57f5-81aa-4251287dd7c5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_host = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(RutaDatos & "dim_host.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"host_id", Int64.Type}, {"es_superhost", Int64.Type}}, "en-US")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
