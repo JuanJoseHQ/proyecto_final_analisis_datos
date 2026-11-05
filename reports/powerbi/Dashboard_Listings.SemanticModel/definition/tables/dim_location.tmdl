@@ -3,8 +3,8 @@ table dim_location
 
 	column location_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: 5b3c0569-f545-556e-995e-a3ac43f2e8a9
 		summarizeBy: none
 		sourceColumn: location_key
@@ -54,3 +54,4 @@ table dim_location
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

@@ -3,8 +3,8 @@ table dim_property
 
 	column property_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: 1bdf0f29-0c8b-52e8-bc65-68ba0ec99ed6
 		summarizeBy: none
 		sourceColumn: property_key
@@ -46,3 +46,4 @@ table dim_property
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

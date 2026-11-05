@@ -44,8 +44,8 @@ table fact_listing
 
 	column host_id
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: 94b1328a-f302-5790-bf0b-c081d11779fb
 		summarizeBy: none
 		sourceColumn: host_id
@@ -54,8 +54,8 @@ table fact_listing
 
 	column location_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: 17a24221-49d6-5e57-874f-6ef18ff32c9a
 		summarizeBy: none
 		sourceColumn: location_key
@@ -64,8 +64,8 @@ table fact_listing
 
 	column property_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: e1d148de-7770-58c6-98bc-88fc157f29da
 		summarizeBy: none
 		sourceColumn: property_key
@@ -74,8 +74,8 @@ table fact_listing
 
 	column scrape_date_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: e5420a62-3e81-59b4-a01c-124e728a5b8b
 		summarizeBy: none
 		sourceColumn: scrape_date_key
@@ -84,8 +84,8 @@ table fact_listing
 
 	column first_review_date_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: d8f3d18a-dbf1-5c88-b26b-90c6d01d7dc4
 		summarizeBy: none
 		sourceColumn: first_review_date_key
@@ -94,8 +94,8 @@ table fact_listing
 
 	column last_review_date_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: 73c631f8-44a0-53ad-86e2-ecf62dfc2b41
 		summarizeBy: none
 		sourceColumn: last_review_date_key
@@ -328,6 +328,7 @@ table fact_listing
 		sourceColumn: host_since
 
 		annotation SummarizationSetBy = User
+
 		annotation UnderlyingDateTimeDataType = Date
 
 	column host_since_year
@@ -568,3 +569,4 @@ table fact_listing
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

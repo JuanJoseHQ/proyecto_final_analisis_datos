@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p1_alcaldias",
   "position": {
     "x": 16,
     "y": 178,
     "z": 10,
-    "width": 616,
     "height": 270,
+    "width": 616,
     "tabOrder": 10
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_location.alcaldia",
-              "nativeQueryRef": "alcaldia"
+              "nativeQueryRef": "alcaldia",
+              "active": true
             }
           ]
         },

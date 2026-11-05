@@ -4,8 +4,8 @@ table dim_date
 
 	column date_key
 		dataType: int64
-		formatString: 0
 		isHidden
+		formatString: 0
 		lineageTag: aca24e55-22cc-51b8-9701-6e790977f994
 		summarizeBy: none
 		sourceColumn: date_key
@@ -21,6 +21,7 @@ table dim_date
 		sourceColumn: fecha
 
 		annotation SummarizationSetBy = User
+
 		annotation UnderlyingDateTimeDataType = Date
 
 	column anio
@@ -122,3 +123,4 @@ table dim_date
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

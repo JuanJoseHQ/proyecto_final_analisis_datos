@@ -10,8 +10,11 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["RutaDatos", "fact_listing", "dim_host", "dim_property", "dim_location", "dim_date"]
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table fact_listing
 ref table dim_host
 ref table dim_property
 ref table dim_location
 ref table dim_date
+

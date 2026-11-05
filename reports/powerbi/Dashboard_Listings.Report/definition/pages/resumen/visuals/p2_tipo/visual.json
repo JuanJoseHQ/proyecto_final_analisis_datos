@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p2_tipo",
   "position": {
     "x": 648,
     "y": 178,
     "z": 11,
-    "width": 616,
     "height": 270,
+    "width": 616,
     "tabOrder": 11
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_property.room_type",
-              "nativeQueryRef": "room_type"
+              "nativeQueryRef": "room_type",
+              "active": true
             }
           ]
         },

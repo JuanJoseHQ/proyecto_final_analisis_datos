@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p3_3",
   "position": {
     "x": 856,
     "y": 494,
     "z": 15,
-    "width": 408,
     "height": 214,
+    "width": 408,
     "tabOrder": 15
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_host.Tipo Anfitrión",
-              "nativeQueryRef": "Tipo Anfitrión"
+              "nativeQueryRef": "Tipo Anfitrión",
+              "active": true
             }
           ]
         },

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "titulo",
   "position": {
-    "x": 16,
-    "y": 8,
+    "x": 16.119402985074625,
+    "y": 8.0597014925373127,
     "z": 0,
+    "height": 69.850746268656721,
     "width": 720,
-    "height": 60,
     "tabOrder": 0
   },
   "visual": {
@@ -33,7 +33,7 @@
                     "value": "Snapshot de Inside Airbnb (25 jun – 2 jul 2025). Ocupación e ingreso son estimaciones de Inside Airbnb, no reservas reales.",
                     "textStyle": {
                       "fontSize": "9pt",
-                      "color": "#605E5C"
+                      "color": "#605e5c"
                     }
                   }
                 ]
